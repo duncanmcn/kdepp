@@ -26,14 +26,15 @@ std::cout << result << std::endl;
 
 #include "kdepp/kde.h"
 
-std::array<double, 2> p1 = {0, 1}; // a point of data (x, y)
-std::array<double, 2> p2 = {1, 2};
+std::array<double, 2> p1 = {0, 2}; // a point of data (x, y)
+std::array<double, 2> p2 = {0.15, 2.3};
+std::array<double, 2> p3 = {-0.1, 2.5};
 
-std::vector<std::array<double, 2>> data = {p1, p2};
+std::vector<std::array<double, 2>> data = {p1, p2, p3};
 
 kdepp::Kde2d kernel(data);
 
-std::array<double, 2> test_point = {1, 2.5};
+std::array<double, 2> test_point = {0.1, 2.5};
 double result = kernel.eval(test_point);
 std::cout << result << std::endl;
 

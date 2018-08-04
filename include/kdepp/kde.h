@@ -4,6 +4,7 @@
 #include <array>
 #include <cmath>
 #include <numeric>
+#include <stdexcept>
 #include <string>
 #include <vector>
 
@@ -92,6 +93,9 @@ class Kde1d {
           std::string bandwidth_method = "scott")
         : data_(data)
     {
+        if (data_.size() < 2) {
+            throw std::invalid_argument("Only one data point");
+        }
         init_bandwidth(bandwidth_method);
         pre_calculate_terms();
     };
@@ -170,6 +174,9 @@ class Kde2d {
         , h_()
     {
         // TODO assert dimension is 2?
+        if (data_.size() < 2) {
+            throw std::invalid_argument("Only one data point");
+        }
         init_bandwidth(bandwidth_method);
         pre_calculate_terms();
     };
@@ -236,6 +243,9 @@ class Kde2d {
     {
         std::array<Data_type ,4> inv = {0, 0, 0, 0};
         Data_type determinant = h_[0] * h_[3] - h_[1] * h_[2];
+        if (determinant == 0) {
+            throw std::runtime_error("Singular data matrix");
+        }
         inv[0] = mat[3];
         inv[1] = -1 * mat[1];
         inv[2] = -1 * mat[2];
