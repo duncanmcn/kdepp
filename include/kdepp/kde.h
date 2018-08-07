@@ -263,6 +263,9 @@ class Kde2d {
         Data_type determinant = h_[0] * h_[3] - h_[1] * h_[2];
         pow_pi_term_ = std::pow(2 * kdemath::pi<Data_type>(), -2.0 / 2.0);
         h_pow_term_ = std::pow(determinant, -1.0/2.0);
+        if (std::isnan(h_pow_term_)) {
+            throw std::runtime_error("Math domain error");
+        }
     }
 
     std::vector<T> const data_;
