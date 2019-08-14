@@ -93,8 +93,14 @@ class Kde1d {
           std::string bandwidth_method = "scott")
         : data_(data)
     {
+        // Some checks on data, first num elements:
         if (data_.size() < 2) {
             throw std::invalid_argument("Only one data point");
+        }
+
+        // All the same is invalid:
+        if (std::all_of(data.begin(), data.end(), [&data](T x){return x == data.front();})) {
+            throw std::invalid_argument("Invalid data set: all values equal");
         }
         init_bandwidth(bandwidth_method);
         pre_calculate_terms();
