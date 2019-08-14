@@ -46,7 +46,7 @@ The following are provide for convenience if you are using C++14 or lower:
 
 ``` C++
 // The template type is the data type.
-// kdepp always takes a std::vector of the data type as the paramater in the constructor:
+// kdepp always takes a std::vector of the data type as the parameter in the constructor:
 using Kde1d_d = Kde1d<double>;
 using Kde1d_f = Kde1d<float>;
 using Kde2d_vecd = Kde2d<std::vector<double>>;
