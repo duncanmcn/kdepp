@@ -38,6 +38,11 @@ std::array<double, 2> test_point = {0.1, 2.5};
 double result = kernel.eval(test_point);
 std::cout << result << std::endl;
 
+// Multivariate:
+
+possible with eigen and including kdemv.h
+documentation update required
+
 ```
 
 ### Convenience typedefs:
